@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\formExperiment\formExp.component.html" />
     <Content Include="packages.config" />
     <Content Include="api\products.json" />
     <Content Include=".editorconfig" />
@@ -131,8 +132,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\formExperiment\formExp.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\models\employee.model.ts" />
     <TypeScriptCompile Include="app\product\product-list.component.ts" />
   </ItemGroup>
   <ItemGroup />
