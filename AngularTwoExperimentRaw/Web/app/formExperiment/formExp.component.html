@@ -1,0 +1,62 @@
+﻿<div class="panel panel-info col-md-6 col-md-offset-2">
+    <div class="panel-heading">{{formTitle}}</div>
+    <div class="panel-body">
+        <form #form="ngForm" novalidate>
+            <div class="form-group">
+                <label >First Name</label>
+                <input type="text" required placeholder="First Name" class="form-control"
+                       name="firstName" [ngModel]="model.firstName" (ngModelChange)="firstLetterToUpperCase($event)"
+                       #firstName="ngModel"[class.has-error]="firstName.invalid && firstName.dirty"/>
+                <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.dirty">
+                    First Name is requiered
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" required placeholder="Last Name" class="form-control"
+                       name="lastName" [(ngModel)]="model.lastName"/>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="isFullTime" [(ngModel)]="model.isFullTime"/> Full Time Employee
+                </label>
+            </div>
+
+            <!--Radio control-->
+            <label>Payment Type</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="payType" value="w2" checked [(ngModel)]="model.payType"/>W2
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="payType" value="1099" [(ngModel)]="model.payType"/>1099
+                </label>
+            </div>
+
+            <!--select control-->
+            <div class="form-group" [class.has-error]="hasLanguageError">
+                <label class="control-label" >Primary Language</label>
+                <select class="form-control" #language name="language" [(ngModel)]="model.language" (blur)="validateLanguage($event)">
+                    <option value="default">Select a language..</option>
+                    <option *ngFor="let lang of languages">
+                        {{lang}}
+                    </option>
+                </select>
+            </div>
+            <!--date control-->
+            <div class="form-group">
+                <label>Date picker</label>
+                <input type="date" name="datePicker" ngModel/>
+            </div>
+            <!--button control-->
+            <button type="submit" class="btn btn-danger">Ok</button>
+        </form>
+        Model : {{model | json}}
+        <br/>
+        Angular : {{form.value| json}}
+    </div>
+    <div class="panel-footer">{{formFooter}}</div>
+    <!--{{form.pristine}}-->
+</div>
